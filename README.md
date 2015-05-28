@@ -55,7 +55,7 @@ UIApplication.sharedApplication.delegate;
 
 **Note:** Method notation is preferred when accessing an overridden getter or setter. This is in order to provide clarity that the value is being modified in some way before being set or returned. 
 
-When accessing a property on self dot notation should be used. Expect in the case of an overridden getter or setter.
+Accessing a property on `self` should follow the same rules listed above. Properties on `self` should not be referenced through the automatically generated instance variable.
 
 **For example:**
 ```objc
