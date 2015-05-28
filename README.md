@@ -667,7 +667,9 @@ Interface header files should have the same organization as implementation files
 ## Auto Formatting
 **TO DO:** Uncrustify/Clang auto-formatting 
 
-
+## Documentation
+We'll default to using `VVDocumenter` for all documentation (https://github.com/onevcat/VVDocumenter-Xcode)
+**TO DO:** Investigate if this tool can be updated to style in the Apple Doc Formatt.
 
 # Other Objective-C Style Guides
 
