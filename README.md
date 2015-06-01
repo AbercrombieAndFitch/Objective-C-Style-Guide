@@ -583,13 +583,13 @@ if (someObject == nil) { }
 ```objc
 if (isAwesome) { }
 if (!someNumber.boolValue) { }
-if (someNumber.boolValue == NO) { }
 ```
 
 **Not:**
 
 ```objc
 if (isAwesome == YES) { } // Never do this.
+if (someNumber.boolValue == NO) { }
 ```
 
 If the name of a `BOOL` property is expressed as an adjective, the property’s name can omit the `is` prefix but should specify the conventional name for the getter.
