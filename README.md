@@ -1,6 +1,6 @@
 # Abercrombie & Fitch: Objective-C Style Guide
 
-This style guide outlines the coding conventions of the iOS teams at A&F. This is base on the [NYTimes Objective-C Style Guide](https://github.com/NYTimes/objective-c-style-guide)
+This style guide outlines the coding conventions of the iOS teams at A&F. This is based on the [NYTimes Objective-C Style Guide](https://github.com/NYTimes/objective-c-style-guide)
 
 
 ## Introduction
