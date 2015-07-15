@@ -668,8 +668,7 @@ Interface header files should have the same organization as implementation files
 **TO DO:** Uncrustify/Clang auto-formatting 
 
 ## Documentation
-We'll default to using `VVDocumenter` for all documentation (https://github.com/onevcat/VVDocumenter-Xcode)
-**TO DO:** Investigate if this tool can be updated to style in the Apple Doc Formatt.
+We'll default to using [VVDocumenter](https://github.com/onevcat/VVDocumenter-Xcode) for all documentation, using the [Apple Header Documentation style](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/HeaderDoc/tags/tags.html). To enable this style, go to the VVDocumenter Settings in Xcode and check the checkbox next to **_Use /\*! (HeaderDoc style) instead of /\*\*_**
 
 # Other Objective-C Style Guides
 
