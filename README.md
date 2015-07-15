@@ -575,7 +575,7 @@ Never compare something directly to `YES`, because `YES` is defined as `1`, and 
 
 ```objc
 if (!someObject) { }
-if (someObject == nil) { }
+if (someObject) { }
 ```
 
 **For a `BOOL` value:**
@@ -590,6 +590,7 @@ if (!someNumber.boolValue) { }
 ```objc
 if (isAwesome == YES) { } // Never do this.
 if (someNumber.boolValue == NO) { }
+if (someObject == nil) { }
 ```
 
 If the name of a `BOOL` property is expressed as an adjective, the property’s name can omit the `is` prefix but should specify the conventional name for the getter.
