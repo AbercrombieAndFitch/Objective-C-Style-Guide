@@ -2,10 +2,9 @@
 
 This style guide outlines the coding conventions of the iOS teams at A&F. This is based on the [NYTimes Objective-C Style Guide](https://github.com/NYTimes/objective-c-style-guide)
 
-
 ## Introduction
 
-Here are some of the documents from Apple that informed the style guide. If something isn’t mentioned here, it’s probably covered in great detail in one of these:
+Here are some of the documents from Apple that informed this style guide. If something isn’t mentioned here, it’s probably covered in great detail in one of these:
 
 * [The Objective-C Programming Language](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjectiveC/Introduction/introObjectiveC.html)
 * [Cocoa Fundamentals Guide](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/CocoaFundamentals/Introduction/Introduction.html)
@@ -14,6 +13,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 
 ## Table of Contents
 
+* [Developer Environment Setup](#developer-environment-setup)
 * [Dot Notation Syntax](#dot-notation-syntax)
 * [Spacing](#spacing)
 * [Conditionals](#conditionals)
@@ -37,6 +37,46 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [Imports](#imports)
 * [Xcode Project](#xcode-project)
 
+## Developer Environment Setup
+
+This project relies on the use of a number of development dependencies. To make sure your project settings are in line with the rest of the team please make sure you have the following tools and versions installed.
+
+### Ruby
+Version: 2.2.0
+This project uses [RVM](https://rvm.io/) to manage it's Ruby dependencies over the system gems. Full instructions and troubleshooting is available at [RVM's](https://rvm.io/) site.
+
+* Installing:
+  * Open `Terminal`
+  * Execute the line `\curl -sSL https://get.rvm.io | bash -s stable --ruby=2.2.0`
+
+* To Verify it was installed correctly
+  * Execute the line `which ruby`
+  * You should see `/Users/#{UserName}/.rvm/rubies/ruby-2.2.0/bin/ruby`
+
+### Xcode
+Version: 6.4
+
+* Installing:
+  * XCode can be installed from the [App Store](https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12)
+
+### OSX Yosemite
+Version: 10.10.3
+
+The latest version of Yosemite can be installed from the [App Store](https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=915041082&mt=12&ls=1)
+
+### GitHub
+If you haven't already please create a [GitHub](https://github.com/join) and notify your A&F team lead so they can get you added to the A&F private repos.
+
+### Slack
+We use [Slack](https://slack.com/create#email) for communication. You don't have it already you can sign up for free and your A&F team lead can work with you to get you added to the A&F channels.
+
+### Project Specific tools
+Each project manages it's own `gem` and `pod` dependencies. RubyGems (including the CocoaPod gem) are managed by Bundler (installed during the [RVM](#rvm) setup.) Each Project has a `Gemfile` and one or more `Podfile`s. To install that projects dependencies execute:
+* `bundle install`
+* `pod install`
+
+**NOTE:** If this is your first time using CocoaPods on this machine you'll want to execute `pod setup` before running `pod install`
+
 ## Dot Notation Syntax
 
 Dot notation should be used for accessing and mutating properties. Bracket notation is preferred in all other instances.
@@ -53,7 +93,7 @@ view.backgroundColor = [UIColor orangeColor];
 UIApplication.sharedApplication.delegate;
 ```
 
-**Note:** Method notation is preferred when accessing an overridden getter or setter. This is in order to provide clarity that the value is being modified in some way before being set or returned. 
+**Note:** Method notation is preferred when accessing an overridden getter or setter. This is in order to provide clarity that the value is being modified in some way before being set or returned.
 
 Accessing a property on `self` should follow the same rules listed above. Properties on `self` should not be referenced through the automatically generated instance variable.
 
@@ -79,8 +119,8 @@ self.delegate;
 if (user.isHappy)
 {
     // Do something
-} 
-else 
+}
+else
 {
     // Do something else
 }
@@ -105,7 +145,7 @@ Conditional bodies should always use braces even when a conditional body could b
 
 **For example:**
 ```objc
-if (!error) 
+if (!error)
 {
     return success;
 }
@@ -162,7 +202,7 @@ When methods return an error parameter by reference, switch on the returned valu
 **For example:**
 ```objc
 NSError *error;
-if (![self trySomethingWithError:&error]) 
+if (![self trySomethingWithError:&error])
 {
     // Handle Error
 }
@@ -172,7 +212,7 @@ if (![self trySomethingWithError:&error])
 ```objc
 NSError *error;
 [self trySomethingWithError:&error];
-if (error) 
+if (error)
 {
     // Handle Error
 }
@@ -222,14 +262,14 @@ Variables should be named descriptively, with the variable’s name clearly comm
 
 Single letter variable names should be avoided except as simple counter variables in loops.
 
-Asterisks indicating a type is a pointer should be “attached to” the variable name. 
+Asterisks indicating a type is a pointer should be “attached to” the variable name.
 
-**For example,** 
+**For example,**
 ```objc
-NSString *text 
+NSString *text
 ```
 
-**Not:** 
+**Not:**
 ```objc
 NSString* text
 ```
@@ -344,10 +384,10 @@ Block comments should generally be avoided, as code should be as self-documentin
 `init` methods should use the `instancetype` declaration be structured like this:
 
 ```objc
-- (instancetype)init 
+- (instancetype)init
 {
     self = [super init]; // or call the designated initializer
-    if (self) 
+    if (self)
     {
         // Custom initialization
     }
@@ -359,9 +399,9 @@ Block comments should generally be avoided, as code should be as self-documentin
 **Not:**
 
 ```objc
-- (id)init 
+- (id)init
 {
-    if ((self = [super init])) 
+    if ((self = [super init]))
     {
         // Custom initialization
     }
@@ -392,7 +432,7 @@ NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];
 NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
 ```
 
-When creating `NSMutableString`, `NSMutableDictionary`, `NSMutableArray`, and `NSMutableNumber` objects an immutable instance should be created first. 
+When creating `NSMutableString`, `NSMutableDictionary`, `NSMutableArray`, and `NSMutableNumber` objects an immutable instance should be created first.
 
 **For example:**
 
@@ -400,7 +440,7 @@ When creating `NSMutableString`, `NSMutableDictionary`, `NSMutableArray`, and `N
 NSDictionary *productManagers = @{@"iPhone" : @"Kate", @"iPad" : @"Kamal", @"Mobile Web" : @"Bill"};
 NSMutableDictionary *mutableProductManagers = [NSMutableDictionary dictionaryWithDictionary: productManagers];
 ```
-or 
+or
 ```objc
 NSDictionary *productManagers = @{@"iPhone" : @"Kate", @"iPad" : @"Kamal", @"Mobile Web" : @"Bill"};
 NSMutableDictionary *mutableProductManagers = productManagers.mutableCopy;
@@ -454,7 +494,7 @@ static const CGFloat kAFSImageThumbnailHeight = 50.0;
 #define thumbnailHeight 50
 ```
 
-##Blocks 
+##Blocks
 Blocks should be declared with a `typedef` and be supplied by a separate named method. This aids in code clean up, and reusability.
 
 **For example:**
@@ -466,7 +506,7 @@ Blocks should be declared with a `typedef` and be supplied by a separate named m
     {
         successBlock([AFSModel modelOfClass:modelClass fromJSONDictionary:responseObject]);
     };
-    
+
     return success;
 }
 
@@ -475,7 +515,7 @@ Blocks should be declared with a `typedef` and be supplied by a separate named m
     NSString *endPoint = kEndPointUserOrder;
     AFNSuccessHandler success = [AFSBlockBuilder afnSuccessFromModelBlock:completionBlock forClass:[AFSOrder class]];
     AFNFailureHandler failure = [AFSBlockBuilder afnFailureFromAPIErrorBlock:errorBlock];
-    
+
     [[AFSSessions sharedClient] GET:endPoint parameters:nil success:success failure:failure];
 }
 ```
@@ -498,16 +538,16 @@ or
 - (void)getUserOrder:(AFSModelBlock)completionBlock error:(AFSAPIErrorHandler)errorBlock
 {
     NSString *endPoint = kEndPointUserOrder;
-    
+
     AFNSuccessHandler success = ^(NSURLSessionDataTask *task, id responseObject)
     {
         completionBlock([AFSModel modelOfClass:[AFSOrder class] fromJSONDictionary:responseObject]);
     };
-    
+
     AFNFailureHandler failure = ^(NSURLSessionDataTask *task, NSError *error) {
         errorBlock([AFSAPIError getAPIErrorsFromError:error]);
     };
-    
+
     [[AFSSessions sharedClient] GET:endPoint parameters:nil success:success failure:failure];
 }
 ```
@@ -607,7 +647,7 @@ _Text and example taken from the [Cocoa Naming Guidelines](https://developer.app
 
 Singleton objects should use a thread-safe pattern for creating their shared instance.
 ```objc
-+ (instancetype)sharedInstance 
++ (instancetype)sharedInstance
 {
    static id sharedInstance = nil;
 
@@ -641,12 +681,12 @@ Note: For modules use the [@import](http://clang.llvm.org/docs/Modules.html#usin
 
 When importing one class from a CocoaPod framework/library import using individual files
 ```objc
-#import <AFSDK/AFSProduct.h> 
+#import <AFSDK/AFSProduct.h>
 ```
 
 If using two or more classes from a CocoaPod framework/library import the entire framework. This is preferred for neatness, and decoupling from the implementation of the library.
 ```objc
-#import <AFSDK/AFSDK.h> 
+#import <AFSDK/AFSDK.h>
 ```
 
 ## Xcode project
@@ -666,7 +706,7 @@ Class files should have the following structure from top to bottom
 Interface header files should have the same organization as implementation files.
 
 ## Auto Formatting
-**TO DO:** Uncrustify/Clang auto-formatting 
+**TO DO:** Uncrustify/Clang auto-formatting
 
 ## Documentation
 We'll default to using [VVDocumenter](https://github.com/onevcat/VVDocumenter-Xcode) for all documentation, using the [Apple Header Documentation style](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/HeaderDoc/tags/tags.html). To enable this style, go to the VVDocumenter Settings in Xcode and check the checkbox next to **_Use /\*! (HeaderDoc style) instead of /\*\*_**
@@ -683,4 +723,3 @@ Other style guides to consider when making modifications to this one:
 * [Luke Redpath](http://lukeredpath.co.uk/blog/2011/06/28/my-objective-c-style-guide/)
 * [Marcus Zarra](http://www.cimgf.com/zds-code-style-guide/)
 * [Wikimedia](https://www.mediawiki.org/wiki/Wikimedia_Apps/Team/iOS/ObjectiveCStyleGuide)
-
