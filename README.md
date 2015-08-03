@@ -65,14 +65,14 @@ Version: 10.10.3
 The latest version of Yosemite can be installed from the [App Store](https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=915041082&mt=12&ls=1)
 
 ### GitHub
-If you haven't already please create a [GitHub](https://github.com/join) and notify your A&F team lead so they can get you added to the A&F private repos.
+If you haven't already please create a [GitHub](https://github.com/join) account and notify your A&F team lead so they can get you added to the A&F private repos.
 
 ### Project Specific tools
-Each project manages it's own `gem` and `pod` dependencies. RubyGems (including the CocoaPod gem) are managed by Bundler (installed during the [RVM](#rvm) setup.) Each Project has a `Gemfile` and one or more `Podfile`s. To install that projects dependencies execute:
+Each project manages it's own `gem` and `pod` dependencies. [RubyGems](https://rubygems.org/) (including the [CocoaPod](https://cocoapods.org/) gem) are managed by [Bundler](http://bundler.io/) (installed during the [RVM](#rvm) setup.) Each Project has a `Gemfile` and one or more `Podfile`s. To install that projects dependencies execute:
 * `bundle install`
 * `pod install`
 
-**NOTE:** If this is your first time using CocoaPods on this machine you'll want to execute `pod setup` before running `pod install`
+**NOTE:** If this is your first time using [CocoaPods](https://cocoapods.org/) on this machine you'll want to execute `pod setup` before running `pod install`
 
 ## Dot Notation Syntax
 
